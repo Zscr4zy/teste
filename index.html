@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Para Rayza</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom, #0c0003, #270130);
+      color: #f2f2f2;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* Tela estilo hacker */
+    #acesso {
+      color: #ff0099;
+      font-family: 'Courier New', Courier, monospace;
+      text-align: center;
+    }
+    #acesso h1 {
+      animation: blink 1s infinite;
+    }
+    #progressBar {
+      width: 300px;
+      height: 20px;
+      border: 1px solid #a200ff;
+      margin: 20px auto;
+      position: relative;
+    }
+    #progressFill {
+      background: #9406f3;
+      height: 100%;
+      width: 0;
+      transition: width 3s linear;
+    }
+    #mensagemAcesso {
+      display: none;
+      font-weight: bold;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+
+    /* Slides */
+    .container {
+      display: none;
+      max-width: 800px;
+      padding: 30px;
+      text-align: center;
+      background-color: 
+      rgba(101, 4, 102, 0.08);
+      border-radius: 20px;
+      box-shadow: 0 0 15px rgba(116, 3, 101, 0.2);
+    }
+    .slide {
+      display: none;
+    }
+    .slide.active {
+      display: block;
+      animation: fadeIn 1.5s ease forwards;
+    }
+    h1 {
+  font-size: 40px;
+}
+
+h2 {
+  font-size: 34px;
+}
+
+p {
+  font-size: 24px;
+  line-height: 1.7;
+}
+    button {
+      background: #c603f2;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 10px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    button:hover {
+      background: #8f26ff;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .heart {
+  position: fixed;
+  top: -10px;
+  font-size: 20px;
+  color: #ff4e91;
+  animation: fall linear infinite;
+  z-index: 0;
+  opacity: 0.8;
+  pointer-events: none;
+}
+
+@keyframes fall {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+.rosa {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  width: 150px;
+  animation: balanco 3s infinite ease-in-out;
+  z-index: 1;
+}
+
+@keyframes balanco {
+  0% { transform: rotate(0deg); }
+  50% { transform: rotate(3deg); }
+  100% { transform: rotate(0deg); }
+}
+
+.petal {
+  position: absolute;
+  top: 0;
+  width: 15px;
+  height: 15px;
+  background: pink;
+  border-radius: 50%;
+  opacity: 0.8;
+  animation: cair 5s linear infinite;
+  z-index: 0;
+}
+
+@keyframes cair {
+  0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+}
+#ceuEstrelado {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.estrela {
+  position: absolute;
+  background: white;
+  border-radius: 50%;
+  opacity: 0.8;
+  animation: brilhoEstrela 2s infinite alternate;
+}
+
+@keyframes brilhoEstrela {
+  from { opacity: 0.2; transform: scale(1); }
+  to { opacity: 1; transform: scale(1.2); }
+}
+#lua {
+  position: fixed;
+  top: 60px;
+  right: 60px;
+  width: 100px;
+  height: 100px;
+  background: radial-gradient(circle, #fffdfd, #cfcfcf);
+  border-radius: 50%;
+  box-shadow: 0 0 30px 10px rgba(255, 255, 255, 0.3);
+  z-index: -1;
+}
+  </style>
+</head>
+<body>
+ 
+  <div id="acesso">
+    <h1>Acessando sistema...</h1>
+    <div id="progressBar">
+      <div id="progressFill"></div>
+    </div>
+    <p id="mensagemAcesso">Acesso concluído</p>
+  </div>
+<div id="ceuEstrelado"></div>
+<div id="lua"></div>
+  <div class="container">
+    <div id="slide0" class="slide active">
+      <h1>Clique aqui...</h1>
+      <button onclick="proximoSlide()">Ver mensagem</button>
+    </div>
+
+    <div id="slide1" class="slide">
+      <p>19 de abril: esse foi o dia em que conheci uma pessoa que em minha mente não existe outra igual</p>
+      <button onclick="proximoSlide()">Próximo</button>
+    </div>
+
+    <div id="slide2" class="slide">
+      <p>nós conversamos, desde então percebi que ela tinha uma coisa diferente, a qual nunca tinha visto em outro alguém.</p>
+      <button onclick="proximoSlide()">Próximo</button>
+    </div>
+
+    <div id="slide3" class="slide">
+      <p>Ela mostrava um sorriso que era encantador como a noite de lua cheia, tinha um jeito de uma rosa que não precisava soltar seu perfume para perceber sua presença.</p>
+      <button onclick="proximoSlide()">Próximo</button>
+    </div>
+
+    <div id="slide4" class="slide">
+      <p>Daí então, percebi que ela era a rosa que eu procurava, estar com ela era a mesma sensação de observar o nascer do dia em uma praia tranquila. ah, ia esquecendo de mencionar 
+        quem é esta pessoa,perdoe-me minha mente atrapalhada. mas enfim,e é claro que esta pessoa é...
+      </p>
+      <button onclick="proximoSlide()">Próximo</button>
+    </div>
+
+    <div id="slide5" class="slide">
+      <p> Você né, você mesmo que está lendo, e quem mais seria se não a rosa mais encantadora e perfumosa de todo esse jardim?</p>
+      <button onclick="proximoSlide()">Próximo</button>
+    </div>
+
+    <div id="slide6" class="slide">
+      <h2>Feliz aniversário, princesa Rayza.</h2>
+      <p>Tu és poesia que eu sempre procurei, a mais explícita do mundo literário. Agradeço a Deus por tua vida e por ter me permitido te conhecer. Oro para que seu dia seja incrível e adorável como você.</p>
+    </div>
+  </div>
+
+  <script>
+    // Animação hacker
+    const fill = document.getElementById('progressFill');
+    const acesso = document.getElementById('acesso');
+    const container = document.querySelector('.container');
+    const msg = document.getElementById('mensagemAcesso');
+
+    setTimeout(() => {
+      fill.style.width = '100%';
+    }, 100);
+
+    setTimeout(() => {
+      msg.style.display = 'block';
+    }, 3100);
+
+    setTimeout(() => {
+      acesso.style.display = 'none';
+      container.style.display = 'block';
+    }, 4000);
+
+    // Slides
+    let slideAtual = 0;
+    function proximoSlide() {
+      const slides = document.querySelectorAll('.slide');
+      slides[slideAtual].classList.remove('active');
+      slideAtual++;
+      if (slideAtual < slides.length) {
+        slides[slideAtual].classList.add('active');
+      }
+    }
+  </script>
+  <script>
+    function criarCoracoes() {
+      const heart = document.createElement("div");
+      heart.classList.add("heart");
+      heart.innerText = "❤";
+  
+      // posição horizontal aleatória
+      heart.style.left = Math.random() * 100 + "vw";
+      // duração e tamanho aleatórios
+      heart.style.fontSize = Math.random() * 10 + 15 + "px";
+      heart.style.animationDuration = (Math.random() * 2 + 3) + "s";
+  
+      document.body.appendChild(heart);
+  
+      // remover depois de cair
+      setTimeout(() => {
+        heart.remove();
+      }, 5000);
+    }
+  
+    setInterval(criarCoracoes, 300); // cria um coração a cada 300ms
+  </script>
+  <script>
+    function criarPetala() {
+      const petal = document.createElement('div');
+      petal.classList.add('petal');
+      petal.style.left = Math.random() * 100 + "vw";
+      petal.style.background = ['#ffb6c1', '#ff69b4', '#ffc0cb'][Math.floor(Math.random() * 3)];
+      petal.style.width = petal.style.height = (Math.random() * 10 + 5) + "px";
+      petal.style.animationDuration = (Math.random() * 3 + 2) + "s";
+      
+      document.body.appendChild(petal);
+  
+      setTimeout(() => {
+        petal.remove();
+      }, 6000);
+    }
+  
+    setInterval(criarPetala, 500);
+    
+  function criarEstrelas(qtd = 100) {
+    const ceu = document.getElementById('ceuEstrelado');
+    for (let i = 0; i < qtd; i++) {
+      const estrela = document.createElement('div');
+      estrela.classList.add('estrela');
+      estrela.style.width = estrela.style.height = Math.random() * 2 + 1 + 'px';
+      estrela.style.top = Math.random() * 100 + '%';
+      estrela.style.left = Math.random() * 100 + '%';
+      estrela.style.animationDuration = (Math.random() * 3 + 2) + 's';
+      ceu.appendChild(estrela);
+    }
+  }
+
+  criarEstrelas(150); // Quantidade de estrelas
+
+  </script>
+</body>
+</html>
